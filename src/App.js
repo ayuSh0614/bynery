@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ProfileList from './components/ProfileList';
+import ProfileDetails from './components/ProfileDetails';
+import AdminDashboard from './components/AdminDashboard';
+import { CssBaseline, Container, Typography } from '@mui/material';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <CssBaseline />
+      <Container maxWidth="lg">
+        <Typography variant="h3" align="center" gutterBottom>
+          Profile Mapping App
+        </Typography>
+        <Routes>
+          <Route path="/" element={<ProfileList />} />
+          <Route path="/profile/:id" element={<ProfileDetails />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+        </Routes>
+      </Container>
+    </Router>
   );
 }
 
